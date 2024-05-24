@@ -26,7 +26,7 @@ class Nodo {
 function pedirValorBooleano(fila, columna) {
     let valor;
     do {
-        valor = prompt(`Ingrese 0 o 1 en la posición ${fila}, ${columna}`);
+        valor = prompt(`Ingrese 0 o 1 en la posición Fila: ${fila} Columna: ${columna}`);
         if (valor === null) {
             return null;
         }
