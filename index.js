@@ -81,14 +81,9 @@ function crearMatriz(n, esAleatoria = false) {
             }
         }
     }
-
     matriz1 = matriz;
     return matriz;
 }
-
-
-
-
 function procesarMatriz(n, esAleatoria) {
     const matriz = crearMatriz(n, esAleatoria);
     raiz = new Nodo('raiz');
@@ -105,7 +100,7 @@ aleatoria.addEventListener("click", () => {
 btonComenzar.addEventListener("click", () => {
     alert("Ten en cuenta que las filas de una matriz van horizontalmente")
     const n = Number(prompt("Ingresa el tamano de la matriz"))
-    alert(`Tu matriz sera una matriz de ${n} filas y ${n} columnas:${n}x${n}`)
+    alert(`Tu matriz será de ${n} filas y ${n} columnas:${n}x${n}`)
     if (n) {
         procesarMatriz(n, false);
     }
