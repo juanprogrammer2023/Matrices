@@ -9,9 +9,8 @@
 }
 
 body{
-    background-color: beige;
+    background-color:white;
 }
-
 
 .fila{ 
     
@@ -259,22 +258,7 @@ button {
     box-sizing: border-box;
     transform: translateX(-100%);
   }
-  @media only screen and (max-width: 600px) {
-    .box{
-        width: 10%;
-        font-size:80% ;
-        
-    }
-    .btones{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-right: 10px;
-        
-    }
-    
-    
-}
+  
 
 @media only screen and ((min-width: 600px) and (max-width:900px)) {
   
@@ -410,17 +394,211 @@ button {
   stroke-width: 2px;
 }
 
-.container-grafo{
+.container-grafo {
+  border: 3px solid black;
+  margin: 3%;
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+  height: 100vh; /* Esto asegura que el contenedor ocupe toda la altura de la pantalla */
+}
 
+.loader {
+  position: absolute;
 }
 
 @media only screen and (max-width: 600px) {
+  .loader{
+    margin-left: 10%;
+  }
   .container-grafo{
     margin-left: -20%;
   }
+  footer{
+    flex-direction: column;
+  }
+  .card {
+    margin-top: 20px;
+  }
+
 }
+
+footer{
+  background-color: rgb(31, 31, 31);
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 1%;
+  
+}
+
+.card {
+  --main-color: #fff;
+  --submain-color: #ccc;
+  --bg-color: #000;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  position: relative;
+  width: 300px;
+  height: 384px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 20px;
+  background: var(--bg-color);
+}
+
+.card__img {
+  height: 192px;
+  width: 100%;
+}
+
+.card__img svg {
+  height: 100%;
+  border-radius: 20px 20px 0 0;
+}
+
+.card__avatar {
+  position: absolute;
+  width: 114px;
+  height: 114px;
+  background: var(--bg-color);
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: calc(50% - 57px);
+}
+
+.card__avatar img {
+  border-radius: 200px;
+  width: 100px;
+  height: 100px;
+}
+
+.card__title {
+display: flex;
+  margin-top: 90px;
+  font-weight: 500;
+  font-size: 18px;
+  color: var(--main-color);
+}
+
+.card__subtitle {
+  margin-top: 10px;
+  font-weight: 400;
+  font-size: 15px;
+  color: var(--submain-color);
+}
+
+.card__btn {
+  margin-top: 15px;
+  width: 76px;
+  height: 31px;
+  border: 2px solid var(--main-color);
+  border-radius: 4px;
+  font-weight: 700;
+  font-size: 11px;
+  color: var(--main-color);
+  background: var(--bg-color);
+  text-transform: uppercase;
+  transition: all 0.3s;
+}
+
+.card__btn-solid {
+  background: var(--main-color);
+  color: var(--bg-color);
+}
+
+.card__btn:hover {
+  background: var(--main-color);
+  color: var(--bg-color);
+}
+
+.card__btn-solid:hover {
+  background: var(--bg-color);
+  color: var(--main-color);
+}
+
+@media only screen and (min-width: 600px) and (max-width: 1400px) {
+
+  .card {
+    margin-top: 20px;
+    width: 30%;
+    
+  }
+}
+
+.evaluaciones{
+  text-align: center;
+  
+}
+
+.shape {
+  --BG-COLOR: #59d5e0;
+  --OUTLINE-COLOR: #068b97;
+  --OUTLINE-SIZE: 15px;
+  width: 7rem;
+  aspect-ratio: 1;
+  position: relative;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  outline: var(--OUTLINE-SIZE) solid var(--OUTLINE-COLOR);
+  background: var(--BG-COLOR);
+  box-shadow: 0px 0px calc(var(--OUTLINE-SIZE) + 25px) rgba(0, 0, 0, 0.438);
+  animation: morph 2.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
+}
+.numRowContainer {
+  height: fit-content;
+  animation: infiniteScroll 2.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
+}
+@keyframes infiniteScroll {
+  from {
+    transform: translate(0, 0);
+  }
+  to {
+    transform: translate(0, -50%);
+  }
+}
+@keyframes morph {
+  50% {
+    --BG-COLOR: PINK;
+    --OUTLINE-COLOR: #ff407d;
+    transform: rotate(150deg);
+    border-radius: 20%;
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .box{
+      width: 10%;
+      font-size:80% ;
+      
+  }
+  .btones{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-right: 10px;
+      
+  }
+  .container-grafo{
+    margin: 5%;
+  }
+
+  .loader{
+   margin-left: -2%;
+  }
+
+
+  
+}
+
 
 

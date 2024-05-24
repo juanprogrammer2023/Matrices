@@ -25,23 +25,14 @@ class Nodo {
 
 function pedirValorBooleano(fila, columna) {
     let valor;
-
-    // Bucle que se repetirá hasta que el usuario ingrese un valor válido
     do {
         valor = prompt(`Ingrese 0 o 1 en la posición ${fila}, ${columna}`);
-
-        // Verificar si el usuario ha cancelado el prompt
         if (valor === null) {
-            // Retornar null para indicar la cancelación
             return null;
         }
-
-        // Verificar si el valor ingresado es un número
         if (isNaN(valor)) {
-            // Si el valor no es un número, mostrar un mensaje de error específico
             alert("Entrada no válida. Por favor, ingrese un número (0 o 1).");
         } else if (valor !== "0" && valor !== "1") {
-            // Si el valor no es 0 o 1, mostrar un mensaje de error específico
             alert("Valor inválido. Por favor, ingrese 0 o 1.");
         }
 
@@ -53,13 +44,12 @@ function pedirValorBooleano(fila, columna) {
 
 function crearMatriz(n, esAleatoria = false) {
     grafito.innerHTML = '';
-    GRAFO.innerHTML = ''; // Limpiar la matriz anterior
-    MATRIZ.innerHTML = ''; // Limpiar la matriz anterior
+    GRAFO.innerHTML = ''; 
+    MATRIZ.innerHTML = '';
     let matriz = [];
 
     for (let i = 0; i < n; i++) {
         if (!esAleatoria) {
-            // Mostrar una alerta indicando la fila que se está creando
             alert(`Creando la matriz en la fila ${i}`);
         }
         
@@ -397,6 +387,7 @@ function transitiva(x) {
 
     // Crear un contenedor para todas las evaluaciones
     let evaluaciones = document.createElement('div');
+    evaluaciones.className='evaluaciones'
     evaluaciones.innerHTML = '<h3>Evaluaciones de Transitividad</h3>';
 
     for (let i = 0; i < n; i++) {
@@ -552,7 +543,17 @@ function crearGrafoDesdeMatriz(matriz) {
             .attr("y", d => d.y);
     });
 }
+document.querySelector('.loader').style.display = 'block';
 
+// Función para ocultar el loader cuando se realiza alguna acción en la página
+function hideLoader() {
+  document.querySelector('.loader').style.display = 'none';
+}
+
+// Ejemplo: Ocultar el loader cuando se hace clic en algún lugar de la página
+document.addEventListener('click', function() {
+  hideLoader();
+});
 
 
 
