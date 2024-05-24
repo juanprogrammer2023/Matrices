@@ -25,31 +25,69 @@ class Nodo {
 
 function pedirValorBooleano(fila, columna) {
     let valor;
+
+    // Bucle que se repetirá hasta que el usuario ingrese un valor válido
     do {
         valor = prompt(`Ingrese 0 o 1 en la posición ${fila}, ${columna}`);
-    } while (valor !== "0" && valor !== "1"); // Repetir hasta que el valor sea 0 o 1
+
+        // Verificar si el usuario ha cancelado el prompt
+        if (valor === null) {
+            // Retornar null para indicar la cancelación
+            return null;
+        }
+
+        // Verificar si el valor ingresado es un número
+        if (isNaN(valor)) {
+            // Si el valor no es un número, mostrar un mensaje de error específico
+            alert("Entrada no válida. Por favor, ingrese un número (0 o 1).");
+        } else if (valor !== "0" && valor !== "1") {
+            // Si el valor no es 0 o 1, mostrar un mensaje de error específico
+            alert("Valor inválido. Por favor, ingrese 0 o 1.");
+        }
+
+    } while (isNaN(valor) || (valor !== "0" && valor !== "1"));
+
+    // Convertir el valor ingresado a número y devolverlo
     return Number(valor);
 }
 
 function crearMatriz(n, esAleatoria = false) {
-    grafito.innerHTML='';
+    grafito.innerHTML = '';
     GRAFO.innerHTML = ''; // Limpiar la matriz anterior
     MATRIZ.innerHTML = ''; // Limpiar la matriz anterior
     let matriz = [];
 
     for (let i = 0; i < n; i++) {
+        if (!esAleatoria) {
+            // Mostrar una alerta indicando la fila que se está creando
+            alert(`Creando la matriz en la fila ${i}`);
+        }
+        
         matriz[i] = [];
         for (let j = 0; j < n; j++) {
             if (esAleatoria) {
                 matriz[i][j] = Math.round(Math.random());
             } else {
-                matriz[i][j] = pedirValorBooleano(i, j);
+                let valor = pedirValorBooleano(i, j);
+                
+                // Verificar si se ha cancelado la entrada
+                if (valor === null) {
+                    // Cancelar la creación de la matriz
+                    alert("La creación de la matriz ha sido cancelada.");
+                    return null;
+                }
+
+                matriz[i][j] = valor;
             }
         }
     }
-    matriz1=matriz
+
+    matriz1 = matriz;
     return matriz;
 }
+
+
+
 
 function procesarMatriz(n, esAleatoria) {
     const matriz = crearMatriz(n, esAleatoria);
@@ -65,7 +103,9 @@ aleatoria.addEventListener("click", () => {
 });
 
 btonComenzar.addEventListener("click", () => {
-    const n = prompt("Ingresa el número de filas y columnas de la matriz");
+    alert("Ten en cuenta que las filas de una matriz van horizontalmente")
+    const n = Number(prompt("Ingresa el tamano de la matriz"))
+    alert(`Tu matriz sera una matriz de ${n} filas y ${n} columnas:${n}x${n}`)
     if (n) {
         procesarMatriz(n, false);
     }
